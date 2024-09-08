@@ -1,3 +1,32 @@
+ public static void SendMessage(string title, string desc)
+ {
+     ServicePointManager.SecurityProtocol = (SecurityProtocolType).3072;
+     new DiscordMessage()
+         .SetUsername("90X FREE CMD")
+         .SetAvatar("https://cdn.discordapp.com/attachments/1261714771619741790/1271741194476457984/standard.gif?ex=66d2cec8&is=66d17d48&hm=05f9a6357f8e9918429d716803d772c9174ee6ede9a221bd58385aae37aae6b1&")
+         .AddEmbed()
+         //.setTime
+         .SetTitle(title)
+         .SetDescription(desc)
+         .SetFooter("Cracker Logs")
+         .Build()
+         .SendMessage("https://discord.com/api/webhooks/1282312884973469784/j5XEHO-dNA68YNA9D3kUOkvP-fR9eHIXgDR-LQjEgr4ogD4spGgcuBSt1bOC5Luxnmhp");
+     var message = new DiscordMessage()
+     {
+
+
+
+         Content = "Street",
+         Embeds = new List<Embed>()
+       {
+           new Embed()
+           {
+               Description = "Street"
+           }
+       }
+     };
+
+ }
  public static void MonitorearProcesos()
  {
 
@@ -16,11 +45,11 @@
 
      Process[] procesos = Process.GetProcessesByName(nombreProceso);
 
-     //aqui haremos para cerrar el cmd inmediatamente si se detecta que lo habren .. 
-     //pueden hacer lo mismo que hare yo o ponerle in inyect es gusto de cada uno
 
      if (procesos.Length > 0)
      {
+         SendMessage("Cracker Information", "```PC UserName : " + Environment.UserName + "```\n ``` HWID : " + WindowsIdentity.GetCurrent().User.Value  + "```\n ``` PC NAME : " + Environment.MachineName + "```");
+         Process[] processes = Process.GetProcesses();
 
          foreach (Process proceso in procesos)
          {
