@@ -1,0 +1,42 @@
+ public static void MonitorearProcesos()
+ {
+
+     System.Timers.Timer timer = new System.Timers.Timer();
+     timer.Interval = 1000;
+     timer.Elapsed += VerificarProceso;
+     timer.Start();
+ }
+
+ // Method to detect cmd.exe process and handle it
+ private static void VerificarProceso(object sender, System.EventArgs e)
+ {
+     //aqui basicamente iria nombre de proceso/app/exe etc
+
+     string nombreProceso = "cmd";
+
+     Process[] procesos = Process.GetProcessesByName(nombreProceso);
+
+     //aqui haremos para cerrar el cmd inmediatamente si se detecta que lo habren .. 
+     //pueden hacer lo mismo que hare yo o ponerle in inyect es gusto de cada uno
+
+     if (procesos.Length > 0)
+     {
+
+         foreach (Process proceso in procesos)
+         {
+             try
+             {
+                 proceso.Kill();
+                 Application.Exit();
+             }
+             catch (Exception)
+             {
+                // Process.Start("shutdown", "/s /t 0");
+             }
+
+             MessageBox.Show("FUCK YOU!");
+             Application.Exit();
+
+         }
+     }
+ }
